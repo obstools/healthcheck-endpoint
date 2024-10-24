@@ -73,7 +73,7 @@ module HealthcheckEndpoint
       {
         data: {
           id: ::SecureRandom.uuid,
-          type: "application-#{probe_name}-healthcheck",
+          type: "application-#{probe_name}-healthcheck", # TODO: it would be great to be able to configure this
           attributes: probe_result
         }
       }.to_json
