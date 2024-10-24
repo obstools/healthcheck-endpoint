@@ -138,3 +138,6 @@ RSpec/StubbedMock:
 
 RSpec/VerifiedDoubleReference:
   Enabled: false
+
+RSpec/StringAsInstanceDoubleConstant:
+  Enabled: false
