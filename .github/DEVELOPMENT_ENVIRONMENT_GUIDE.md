@@ -2,10 +2,10 @@
 
 ## Preparing
 
-Clone `ruby-on-strum-healthcheck` repository:
+Clone `healthcheck-endpoint` repository:
 
 ```bash
-git clone https://github.com/on-strum/ruby-on-strum-healthcheck.git
+git clone https://github.com/obstools/healthcheck-endpoint.git
 cd  ruby-gem
 ```
 
@@ -13,14 +13,14 @@ Configure latest Ruby environment:
 
 ```bash
 echo 'ruby-3.2.0' > .ruby-version
-cp .circleci/gemspec_latest on_strum-healthcheck.gemspec
+cp .circleci/gemspec_latest healthcheck_endpoint.gemspec
 ```
 
 ## Commiting
 
-Commit your changes excluding `.ruby-version`, `on_strum-healthcheck.gemspec`
+Commit your changes excluding `.ruby-version`, `healthcheck_endpoint.gemspec`
 
 ```bash
-git add . ':!.ruby-version' ':!on_strum-healthcheck.gemspec'
-git commit -m 'Your new awesome on_strum-healthcheck feature'
+git add . ':!.ruby-version' ':!healthcheck_endpoint.gemspec'
+git commit -m 'Your new awesome healthcheck_endpoint feature'
 ```

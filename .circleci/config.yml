@@ -3,7 +3,7 @@
 version: 2.1
 
 defaults: &defaults
-  working_directory: ~/ruby-on-strum-healthcheck
+  working_directory: ~/healthcheck-endpoint
   docker:
     - image: cimg/ruby:<< parameters.ruby-version >>
 
@@ -44,12 +44,12 @@ references:
   use_latest_gemspec: &use_latest_gemspec
     run:
       name: Using latest gemspec
-      command: cp .circleci/gemspecs/latest on_strum-healthcheck.gemspec
+      command: cp .circleci/gemspecs/latest healthcheck_endpoint.gemspec
 
   use_compatible_gemspec: &use_compatible_gemspec
     run:
       name: Using compatible gemspec
-      command: cp .circleci/gemspecs/compatible on_strum-healthcheck.gemspec
+      command: cp .circleci/gemspecs/compatible healthcheck_endpoint.gemspec
 
 jobs:
   linters-ruby:
@@ -119,7 +119,7 @@ jobs:
 
       - store_artifacts:
           name: Saving Simplecov coverage artifacts
-          path: ~/ruby-on-strum-healthcheck/coverage
+          path: ~/healthcheck-endpoint/coverage
           destination: coverage
 
       - deploy:

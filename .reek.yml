@@ -6,34 +6,34 @@ detectors:
 
   ControlParameter:
     exclude:
-      - OnStrum::Healthcheck::Configuration#raise_unless
-      - OnStrum::Healthcheck::Configuration#validator_argument_type
+      - HealthcheckEndpoint::Configuration#raise_unless
+      - HealthcheckEndpoint::Configuration#validator_argument_type
 
   LongParameterList:
     exclude:
-      - OnStrum::Healthcheck::Configuration#raise_unless
+      - HealthcheckEndpoint::Configuration#raise_unless
 
   ManualDispatch:
     exclude:
-      - OnStrum::Healthcheck::Configuration#validator_services_callable
+      - HealthcheckEndpoint::Configuration#validator_services_callable
 
   TooManyConstants:
     exclude:
-      - OnStrum::Healthcheck::Configuration
+      - HealthcheckEndpoint::Configuration
 
   TooManyStatements:
     exclude:
-      - OnStrum::Healthcheck::Configuration#validate_attribute
+      - HealthcheckEndpoint::Configuration#validate_attribute
 
   UtilityFunction:
     exclude:
-      - OnStrum::Healthcheck::Configuration#build_configuration_settings
-      - OnStrum::Healthcheck::Configuration#validator_argument_type
-      - OnStrum::Healthcheck::Configuration#validator_endpoint
-      - OnStrum::Healthcheck::Configuration#validator_http_status_failure
-      - OnStrum::Healthcheck::Configuration#validator_http_status_success
-      - OnStrum::Healthcheck::Configuration#validator_services_callable
-      - OnStrum::Healthcheck::Resolver#configuration
+      - HealthcheckEndpoint::Configuration#build_configuration_settings
+      - HealthcheckEndpoint::Configuration#validator_argument_type
+      - HealthcheckEndpoint::Configuration#validator_endpoint
+      - HealthcheckEndpoint::Configuration#validator_http_status_failure
+      - HealthcheckEndpoint::Configuration#validator_http_status_success
+      - HealthcheckEndpoint::Configuration#validator_services_callable
+      - HealthcheckEndpoint::Resolver#configuration
 
 exclude_paths:
   - spec/support/helpers
