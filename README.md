@@ -197,6 +197,8 @@ end
 
 #### Rails
 
+For Rails 7+, you can use the built-in healthcheck feature provided by Rails itself. See the [official Rails documentation on healthchecks](https://edgeapi.rubyonrails.org/classes/Rails/HealthController.html) for details. However, if you need more advanced healthcheck functionality or want to maintain consistency across different frameworks, you can still use this gem with Rails as follows:
+
 ```ruby
 # config/initializers/healthcheck_endpoint.rb
 
