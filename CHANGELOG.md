@@ -2,6 +2,14 @@
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.0] - 2024-10-25
+
+### Updated
+
+- Updated gem name to `healthcheck_endpoint`, namespace to `HealthcheckEndpoint`
+- Updated gem runtime/development dependencies
+- Updated gem documentation
+
 ## [0.3.0] - 2024-04-15
 
 ### Added
@@ -29,16 +37,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - Added ability to use configuration with default settings without block passing
 
 ```ruby
-OnStrum::Healthcheck.configure # It will create configuration instance with default settings
+HealthcheckEndpoint.configure # It will create configuration instance with default settings
 ```
 
 ### Updated
 
-- Updated `OnStrum::Healthcheck.configure`, tests
+- Updated `HealthcheckEndpoint.configure`, tests
 - Updated gem documentation
 
 ## [0.1.0] - 2024-03-26
 
 ### Added
 
-- First release of `on_strum-healthcheck`.
+- First release of `healthcheck_endpoint`.

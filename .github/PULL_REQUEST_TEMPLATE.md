@@ -43,7 +43,7 @@
 - [ ] My code follows the code style of this project
 - [ ] My change requires a change to the documentation
 - [ ] I have updated the documentation accordingly
-- [ ] I have read the [**CONTRIBUTING** document](https://github.com/on-strum/ruby-on-strum-healthcheck/blob/master/CONTRIBUTING.md)
+- [ ] I have read the [**CONTRIBUTING** document](https://github.com/obstools/healthcheck-endpoint/blob/master/CONTRIBUTING.md)
 - [ ] I have added tests to cover my changes
 - [ ] I have run `bundle exec rspec` from the root directory to see all new and existing tests pass
 - [ ] I have run `rubocop` and `reek` to ensure the code style is valid

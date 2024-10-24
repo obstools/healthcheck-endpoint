@@ -3,7 +3,7 @@
 rspec_custom = ::File.join(::File.dirname(__FILE__), 'support/**/*.rb')
 ::Dir[::File.expand_path(rspec_custom)].sort.each { |file| require file unless file[/\A.+_spec\.rb\z/] }
 
-require_relative '../lib/on_strum/healthcheck'
+require_relative '../lib/healthcheck_endpoint'
 
 RSpec.configure do |config|
   config.expect_with(:rspec) do |expectations|
@@ -20,8 +20,8 @@ RSpec.configure do |config|
   config.order = :random
   config.before { reset_configuration }
 
-  config.include OnStrum::Healthcheck::RspecHelper::ContextGenerator
-  config.include OnStrum::Healthcheck::RspecHelper::Configuration
+  config.include HealthcheckEndpoint::RspecHelper::ContextGenerator
+  config.include HealthcheckEndpoint::RspecHelper::Configuration
 
   ::Kernel.srand(config.seed)
 end

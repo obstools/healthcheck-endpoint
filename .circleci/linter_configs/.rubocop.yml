@@ -96,6 +96,9 @@ Gemspec/RequireMFA:
 Gemspec/DevelopmentDependencies:
   Enabled: false
 
+Gemspec/AddRuntimeDependency:
+  Enabled: false
+
 # Performance -----------------------------------------------------------------
 
 Performance/MethodObjectAsBlock:
@@ -134,4 +137,7 @@ RSpec/StubbedMock:
   Enabled: false
 
 RSpec/VerifiedDoubleReference:
+  Enabled: false
+
+RSpec/StringAsInstanceDoubleConstant:
   Enabled: false

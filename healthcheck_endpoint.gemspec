@@ -12,22 +12,17 @@ Gem::Specification.new do |spec|
   spec.homepage      = 'https://github.com/obstools/healthcheck-endpoint'
   spec.license       = 'MIT'
 
+  current_ruby_version = ::Gem::Version.new(::RUBY_VERSION)
+  ffaker_version = current_ruby_version >= ::Gem::Version.new('3.0.0') ? '~> 2.23' : '~> 2.21'
+
   spec.required_ruby_version = '>= 2.5.0'
   spec.files = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
   spec.require_paths = %w[lib]
 
   spec.add_runtime_dependency 'rack', '>= 2.0.1'
 
-  spec.add_development_dependency 'bundler-audit', '~> 0.9.2'
-  spec.add_development_dependency 'fasterer', '~> 0.11.0'
-  spec.add_development_dependency 'ffaker', '~> 2.23'
+  spec.add_development_dependency 'ffaker', ffaker_version
   spec.add_development_dependency 'json_matchers', '~> 0.11.1'
-  spec.add_development_dependency 'pry-byebug', '~> 3.10', '>= 3.10.1'
   spec.add_development_dependency 'rake', '~> 13.2', '>= 13.2.1'
-  spec.add_development_dependency 'reek', '~> 6.3'
   spec.add_development_dependency 'rspec', '~> 3.13'
-  spec.add_development_dependency 'rubocop', '~> 1.67'
-  spec.add_development_dependency 'rubocop-performance', '~> 1.22', '>= 1.22.1'
-  spec.add_development_dependency 'rubocop-rspec', '~> 3.1'
-  spec.add_development_dependency 'simplecov', '~> 0.22.0'
 end

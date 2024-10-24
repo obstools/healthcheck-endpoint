@@ -1,11 +1,11 @@
-# ![OnStrum::Healthcheck - Simple configurable application healthcheck rack middleware](https://repository-images.githubusercontent.com/769335579/9094eefe-bfc8-483d-9a65-e406d1eb92c6)
+# ![HealthcheckEndpoint - Simple configurable application healthcheck rack middleware](https://repository-images.githubusercontent.com/769335579/012755ac-8757-43b1-8191-7cac167396fa)
 
-[![Maintainability](https://api.codeclimate.com/v1/badges/b4dc21883d489d67fbef/maintainability)](https://codeclimate.com/github/on-strum/ruby-on-strum-healthcheck/maintainability)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/b4dc21883d489d67fbef/test_coverage)](https://codeclimate.com/github/on-strum/ruby-on-strum-healthcheck/test_coverage)
-[![CircleCI](https://circleci.com/gh/on-strum/ruby-on-strum-healthcheck/tree/master.svg?style=svg)](https://circleci.com/gh/on-strum/ruby-on-strum-healthcheck/tree/master)
-[![Gem Version](https://badge.fury.io/rb/on_strum-healthcheck.svg)](https://badge.fury.io/rb/on_strum-healthcheck)
-[![Downloads](https://img.shields.io/gem/dt/on_strum-healthcheck.svg?colorA=004d99&colorB=0073e6)](https://rubygems.org/gems/on_strum-healthcheck)
-[![GitHub](https://img.shields.io/github/license/on-strum/ruby-on-strum-healthcheck)](LICENSE.txt)
+[![Maintainability](https://api.codeclimate.com/v1/badges/e1da0941cf2234c1d110/maintainability)](https://codeclimate.com/github/obstools/healthcheck-endpoint/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/e1da0941cf2234c1d110/test_coverage)](https://codeclimate.com/github/obstools/healthcheck-endpoint/test_coverage)
+[![CircleCI](https://circleci.com/gh/obstools/healthcheck-endpoint/tree/master.svg?style=svg)](https://circleci.com/gh/obstools/healthcheck-endpoint/tree/master)
+[![Gem Version](https://badge.fury.io/rb/healthcheck_endpoint.svg)](https://badge.fury.io/rb/healthcheck_endpoint)
+[![Downloads](https://img.shields.io/gem/dt/healthcheck_endpoint.svg?colorA=004d99&colorB=0073e6)](https://rubygems.org/gems/healthcheck_endpoint)
+[![GitHub](https://img.shields.io/github/license/obstools/healthcheck-endpoint)](LICENSE.txt)
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-v1.4%20adopted-ff69b4.svg)](CODE_OF_CONDUCT.md)
 
 Simple configurable application healthcheck rack middleware. This middleware allows you to embed healthcheck endpoints into your rack based application to perform healthcheck probes. Make your application compatible with [Docker](https://docs.docker.com/reference/dockerfile/#healthcheck)/[Kubernetes](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/#define-a-liveness-http-request) healthchecks in a seconds.
@@ -47,7 +47,7 @@ Ruby MRI 2.5.0+
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'on_strum-healthcheck'
+gem 'healthcheck_endpoint'
 ```
 
 And then execute:
@@ -59,7 +59,7 @@ bundle
 Or install it yourself as:
 
 ```bash
-gem install on_strum-healthcheck
+gem install healthcheck_endpoint
 ```
 
 ## Configuring
@@ -67,11 +67,11 @@ gem install on_strum-healthcheck
 To start working with this gem, you must configure it first as in the example below:
 
 ```ruby
-# config/initializers/on_strum_healthcheck.rb
+# config/initializers/healthcheck_endpoint.rb
 
-require 'on_strum/healthcheck'
+require 'healthcheck_endpoint'
 
-OnStrum::Healthcheck.configure do |config|
+HealthcheckEndpoint.configure do |config|
   # Optional parameter. The list of services that can be triggered
   # during running probes. Each value of this hash should be callable
   # and return boolean.
@@ -147,18 +147,18 @@ end
 
 ### Integration
 
-Please note, to start using this middleware you should configure `OnStrum::Healthcheck` before and then you should to add `OnStrum::Healthcheck::RackMiddleware` on the top of middlewares list.
+Please note, to start using this middleware you should configure `HealthcheckEndpoint` before and then you should to add `HealthcheckEndpoint::RackMiddleware` on the top of middlewares list.
 
 #### Rack
 
 ```ruby
-require 'on_strum/healthcheck'
+require 'healthcheck_endpoint'
 
-# Configuring OnStrum::Healthcheck with default settings
-OnStrum::Healthcheck.configure
+# Configuring HealthcheckEndpoint with default settings
+HealthcheckEndpoint.configure
 
 Rack::Builder.app do
-  use OnStrum::Healthcheck::RackMiddleware
+  use HealthcheckEndpoint::RackMiddleware
   run YourApplication
 end
 ```
@@ -166,51 +166,53 @@ end
 #### Roda
 
 ```ruby
-require 'on_strum/healthcheck'
+require 'healthcheck_endpoint'
 
-# Configuring OnStrum::Healthcheck with default settings
-OnStrum::Healthcheck.configure
+# Configuring HealthcheckEndpoint with default settings
+HealthcheckEndpoint.configure
 
 class YourApplication < Roda
-  use OnStrum::Healthcheck::RackMiddleware
+  use HealthcheckEndpoint::RackMiddleware
 end
 ```
 
 #### Hanami
 
 ```ruby
-# config/initializers/on_strum_healthcheck.rb
+# config/initializers/healthcheck_endpoint.rb
 
-require 'on_strum/healthcheck'
+require 'healthcheck_endpoint'
 
-# Configuring OnStrum::Healthcheck with default settings
-OnStrum::Healthcheck.configure
+# Configuring HealthcheckEndpoint with default settings
+HealthcheckEndpoint.configure
 ```
 
 ```ruby
 # config/environment.rb
 
 Hanami.configure do
-  middleware.use OnStrum::Healthcheck::RackMiddleware
+  middleware.use HealthcheckEndpoint::RackMiddleware
 end
 ```
 
 #### Rails
 
+For Rails 7+, you can use the built-in healthcheck feature provided by Rails itself. See the [official Rails documentation on healthchecks](https://edgeapi.rubyonrails.org/classes/Rails/HealthController.html) for details. However, if you need more advanced healthcheck functionality or want to maintain consistency across different frameworks, you can still use this gem with Rails as follows:
+
 ```ruby
-# config/initializers/on_strum_healthcheck.rb
+# config/initializers/healthcheck_endpoint.rb
 
-require 'on_strum/healthcheck'
+require 'healthcheck_endpoint'
 
-# Configuring OnStrum::Healthcheck with default settings
-OnStrum::Healthcheck.configure
+# Configuring HealthcheckEndpoint with default settings
+HealthcheckEndpoint.configure
 ```
 
 ```ruby
 # config/application.rb
 
 class Application < Rails::Application
-  config.middleware.use OnStrum::Healthcheck::RackMiddleware
+  config.middleware.use HealthcheckEndpoint::RackMiddleware
 end
 ```
 
@@ -234,7 +236,7 @@ Each healthcheck endpoint returns proper HTTP status and body. Determining the r
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at <https://github.com/on-strum/ruby-on-strum-healthcheck>. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct. Please check the [open tickets](https://github.com/on-strum/ruby-on-strum-healthcheck/issues). Be sure to follow Contributor Code of Conduct below and our [Contributing Guidelines](CONTRIBUTING.md).
+Bug reports and pull requests are welcome on GitHub at <https://github.com/obstools/healthcheck-endpoint>. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct. Please check the [open tickets](https://github.com/obstools/healthcheck-endpoint/issues). Be sure to follow Contributor Code of Conduct below and our [Contributing Guidelines](CONTRIBUTING.md).
 
 ## License
 
@@ -242,13 +244,13 @@ The gem is available as open source under the terms of the [MIT License](https:/
 
 ## Code of Conduct
 
-Everyone interacting in the `on_strum-healthcheck` project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](CODE_OF_CONDUCT.md).
+Everyone interacting in the `healthcheck_endpoint` project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](CODE_OF_CONDUCT.md).
 
 ## Credits
 
-- [The Contributors](https://github.com/on-strum/ruby-on-strum-healthcheck/graphs/contributors) for code and awesome suggestions
-- [The Stargazers](https://github.com/on-strum/ruby-on-strum-healthcheck/stargazers) for showing their support
+- [The Contributors](https://github.com/obstools/healthcheck-endpoint/graphs/contributors) for code and awesome suggestions
+- [The Stargazers](https://github.com/obstools/healthcheck-endpoint/stargazers) for showing their support
 
 ## Versioning
 
-`on_strum-healthcheck` uses [Semantic Versioning 2.0.0](https://semver.org)
+`healthcheck_endpoint` uses [Semantic Versioning 2.0.0](https://semver.org)
