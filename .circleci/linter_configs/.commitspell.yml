@@ -13,6 +13,8 @@ languageSettings:
       - GithubUser
 
 words:
+  - Vladislav
+  - Trotsenko
   - bagage
   - bagages
   - bestwebua
@@ -27,4 +29,5 @@ words:
   - rubocop
   - simplecov
   - stdlib
+  - obstools
   - yamlint
